@@ -557,7 +557,7 @@
                             <xsl:when test="$output-full-html">
                                 <html xmlns="http://www.w3.org/1999/xhtml">
                                     <head>
-                                        <title></title>
+                                        <title><xsl:value-of select="/TEI/teiHeader/fileDesc/sourceDesc/msDesc/msIdentifier/tei:idno[@type='shelfmark']"/></title>
                                     </head>
                                     <body>
                                         <div class="content tei-body" id="{/TEI/@xml:id}">
