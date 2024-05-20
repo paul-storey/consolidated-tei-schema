@@ -22,7 +22,14 @@
     <xsl:param name="recurse" select="'yes'"/>
     <xsl:param name="verbose" as="xs:boolean" select="false()"/>
     
-    <xsl:variable name="website-url" as="xs:string" select="''"/>    <!-- This will be overriden by stylesheets that call this one -->
+    <!-- Calling stylesheets may want to override this -->
+    <xsl:variable name="website-url" as="xs:string" select="''"/>
+
+    <!-- Calling stylesheets should override this to ensure
+    the page title is not just the shelfmark (provided by the
+    'Title' template) but also has the name of the catalogue
+    as a suffix - e.g. "MS. 187 - Hebrew and Judaica Manuscripts" -->
+    <xsl:variable name="website-name" as="xs:string" select="''"/>
     <xsl:variable name="output-full-html" as="xs:boolean" select="true()"/>
 
 
@@ -557,7 +564,11 @@
                             <xsl:when test="$output-full-html">
                                 <html xmlns="http://www.w3.org/1999/xhtml">
                                     <head>
-                                        <title><xsl:call-template name="Title"/></title>
+                                        <title>
+                                            <xsl:call-template name="Title"/>
+                                            <xsl:text> - </xsl:text>
+                                            <xsl:value-of select="$website-name"/>
+                                        </title>
                                     </head>
                                     <body>
                                         <div class="content tei-body" id="{/TEI/@xml:id}">
