@@ -557,7 +557,7 @@
                             <xsl:when test="$output-full-html">
                                 <html xmlns="http://www.w3.org/1999/xhtml">
                                     <head>
-                                        <title><xsl:value-of select="/TEI/teiHeader/fileDesc/sourceDesc/msDesc/msIdentifier/tei:idno[@type='shelfmark']"/></title>
+                                        <title><xsl:call-template name="Title"/></title>
                                     </head>
                                     <body>
                                         <div class="content tei-body" id="{/TEI/@xml:id}">
@@ -626,6 +626,18 @@
     <xsl:template name="Footer"></xsl:template>
     <xsl:template name="AdditionalContent"></xsl:template>
     <xsl:template name="MsItemFooter"></xsl:template>
+    <xsl:template name="Title"></xsl:template>
+    <!--
+    Example catalogue-specific implementations of Title...
+
+    Hebrew:
+
+        <xsl:value-of select="/TEI/teiHeader/fileDesc/sourceDesc/msDesc/msIdentifier/idno[not(@*)]"/>
+
+    Medieval:
+
+        <xsl:value-of select="/TEI/teiHeader/fileDesc/sourceDesc/msDesc/msIdentifier/idno[@type='shelfmark']"/>
+    -->
 
     <xsl:template name="AbbreviationsKey">
         <xsl:variable name="abbrmapping" as="element()*">
