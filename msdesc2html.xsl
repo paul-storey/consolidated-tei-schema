@@ -571,6 +571,7 @@
                                         </title>
                                     </head>
                                     <body>
+                                        <h1><xsl:call-template name="Title"/></h1>
                                         <div class="content tei-body" id="{/TEI/@xml:id}">
                                             <xsl:call-template name="Header"/>
                                             <xsl:apply-templates select="/TEI/teiHeader/fileDesc/sourceDesc/msDesc"/>
