@@ -627,7 +627,7 @@
             </xsl:copy>
         </xsl:if>
     </xsl:template>
-    <xsl:template match="text()|processing-instruction()|comment()" mode="stripoutempty"><xsl:copy/></xsl:template>
+    <xsl:template match="text()|comment()" mode="stripoutempty"><xsl:copy/></xsl:template>
 
 
 
