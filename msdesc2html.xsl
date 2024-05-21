@@ -564,6 +564,7 @@
                             <xsl:when test="$output-full-html">
                                 <html xmlns="http://www.w3.org/1999/xhtml">
                                     <head>
+                                        <link rel="stylesheet" href="/msdesc.css"/>
                                         <title>
                                             <xsl:call-template name="Title"/>
                                             <xsl:text> - </xsl:text>
@@ -620,7 +621,7 @@
          was someone's handcoded mistake and ignores the closing div tag) causing display issues especially in IE/Edge -->
     
     <xsl:template match="*" mode="stripoutempty">
-        <xsl:if test="child::* or text() or processing-instruction() or local-name() = ('img', 'br', 'hr', 'title')">
+        <xsl:if test="child::* or text() or processing-instruction() or local-name() = ('img', 'br', 'hr', 'link', 'title')">
             <xsl:copy>
                 <xsl:copy-of select="@*"/>
                 <xsl:apply-templates mode="stripoutempty"/>
